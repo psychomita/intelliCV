@@ -93,4 +93,4 @@ The model was trained using a labeled dataset of resumes across various job role
 **Suchismita Bose**
 
 
-Made with 💚 & 🐍
+*Made with 💚 & 🐍*
