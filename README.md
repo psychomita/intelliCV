@@ -1,6 +1,6 @@
-# 📝 IntelliCV – Resume Classifier Web App
+# 📝 IntelliCV – Resume Analyzer App
 
-IntelliCV is a machine learning–powered web application that automatically classifies resumes into job categories (e.g., Data Science, HR, Software Engineering). Built using **Streamlit**, it takes input resumes (PDF or DOCX), cleans the text, extracts features using **TF-IDF**, and classifies them using a pre-trained **Support Vector Classifier (SVC)**.
+IntelliCV is a machine learning–powered web application that automatically analyzes your resume or CV. Built using **Streamlit**, it takes input resumes (PDF or DOCX), cleans the text, extracts features using **TF-IDF**, and classifies them using a pre-trained **Support Vector Classifier (SVC)**.
 
 ## 🚀 Features
 
