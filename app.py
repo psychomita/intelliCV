@@ -5,9 +5,9 @@ import PyPDF2  # Extract text from PDF
 import re
 
 # Load pre-trained model and TF-IDF vectorizer (ensure these are saved earlier)
-svc_model = pickle.load(open('clf.pkl', 'rb'))  # Example file name, adjust as needed
-tfidf = pickle.load(open('tfidf.pkl', 'rb'))  # Example file name, adjust as needed
-le = pickle.load(open('encoder.pkl', 'rb'))  # Example file name, adjust as needed
+svc_model = pickle.load(open('./models/clf.pkl', 'rb'))
+tfidf = pickle.load(open('./models/tfidf.pkl', 'rb'))
+le = pickle.load(open('./models/encoder.pkl', 'rb'))
 
 
 # Function to clean resume text
@@ -89,7 +89,7 @@ def pred(input_resume):
 def main():
     st.set_page_config(page_title="IntelliCV", page_icon=":memo:", layout="wide")
 
-    st.title("IntelliCV: Your Resume Analyzer")
+    st.title("IntelliCV: Your AI Resume Analyzer")
     st.markdown("Upload a resume in PDF, TXT, or DOCX format and get the predicted job category.")
 
     # File upload section
