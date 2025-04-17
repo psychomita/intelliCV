@@ -1,6 +1,14 @@
-# 📝 IntelliCV – Resume Classifier Web App
+# 📝 IntelliCV – Resume Analyzer App
 
-IntelliCV is a machine learning–powered web application that automatically classifies resumes into job categories (e.g., Data Science, HR, Software Engineering). Built using **Streamlit**, it takes input resumes (PDF or DOCX), cleans the text, extracts features using **TF-IDF**, and classifies them using a pre-trained **Support Vector Classifier (SVC)**.
+[![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red?logo=streamlit)](https://streamlit.io/)
+[![Last Commit](https://img.shields.io/github/last-commit/psychomita/intellicv)](https://github.com/psychomita/intellicv/commits/main)
+[![GitHub stars](https://img.shields.io/github/stars/psychomita/intellicv?style=social)](https://github.com/psychomita/intellicv/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/psychomita/intellicv?style=social)](https://github.com/psychomita/intellicv/network/members)
+[![GitHub contributors](https://img.shields.io/github/contributors/psychomita/intellicv)](https://github.com/psychomita/intellicv/graphs/contributors)
+[![GitHub repo size](https://img.shields.io/github/repo-size/psychomita/intellicv)](https://github.com/psychomita/intellicv)
+
+IntelliCV is a machine learning–powered web application that automatically analyzes your resume or CV. Built using **Streamlit**, it takes input resumes (PDF or DOCX), cleans the text, extracts features using **TF-IDF**, and classifies them using a pre-trained **Support Vector Classifier (SVC)**.
 
 ## 🚀 Features
 
