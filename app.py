@@ -8,9 +8,9 @@ from huggingface_hub import hf_hub_download
 # Download from your HF repo
 repo_id = "psychomita/intellicv-models"
 
-clf_path = hf_hub_download(repo_id=repo_id, filename="clf.pkl")
-tfidf_path = hf_hub_download(repo_id=repo_id, filename="tfidf.pkl")
-encoder_path = hf_hub_download(repo_id=repo_id, filename="encoder.pkl")
+clf_path = hf_hub_download(repo_id=repo_id, filename="clf.pkl", repo_type="model")
+tfidf_path = hf_hub_download(repo_id=repo_id, filename="tfidf.pkl", repo_type="model")
+encoder_path = hf_hub_download(repo_id=repo_id, filename="encoder.pkl", repo_type="model")
 
 # Load models
 svc_model = pickle.load(open(clf_path, 'rb'))
