@@ -3,11 +3,19 @@ import pickle
 import docx  # Extract text from Word file
 import PyPDF2  # Extract text from PDF
 import re
+from huggingface_hub import hf_hub_download
 
-# Load pre-trained model and TF-IDF vectorizer (ensure these are saved earlier)
-svc_model = pickle.load(open('./models/clf.pkl', 'rb'))
-tfidf = pickle.load(open('./models/tfidf.pkl', 'rb'))
-le = pickle.load(open('./models/encoder.pkl', 'rb'))
+# Download from your HF repo
+repo_id = "psychomita/intellicv-models"
+
+clf_path = hf_hub_download(repo_id=repo_id, filename="clf.pkl")
+tfidf_path = hf_hub_download(repo_id=repo_id, filename="tfidf.pkl")
+encoder_path = hf_hub_download(repo_id=repo_id, filename="encoder.pkl")
+
+# Load models
+svc_model = pickle.load(open(clf_path, 'rb'))
+tfidf = pickle.load(open(tfidf_path, 'rb'))
+le = pickle.load(open(encoder_path, 'rb'))
 
 
 # Function to clean resume text
