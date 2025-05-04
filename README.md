@@ -36,19 +36,14 @@ IntelliCV is a machine learning–powered web application that automatically ana
 ├── app.py                    # Streamlit app script
 ├── requirements.txt          # Dependencies for running the app
 ├── README.md
+|── .gitattributes
+|── .gitignore
 │
 ├── data/                     # Raw resumes and training dataset
-│   ├── resume_data.csv
-│   ├── network_eng_resume.pdf
-│   └── health_fitness_resume.pdf
-│
-├── models/                   # ML models used in prediction
-│   ├── clf.pkl               # Trained SVC model
-│   ├── tfidf.pkl             # Trained TF-IDF vectorizer
-│   └── encoder.pkl           # Label encoder
+│   ├── resume_dataset.csv
 │
 ├── notebooks/                # Jupyter notebooks for analysis
-    └── Resume Screening.ipynb
+    └── Resume_Screening.ipynb
 ```
 
 ## 🧪 How to Run Locally
