@@ -1,0 +1,78 @@
+name: Sync Streamlit App to HF Spaces
+run-name: Sync Streamlit App to HF Spaces
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "app/**" # Only run if files in the app/ directory changed
+
+jobs:
+  sync-app:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10 # Adjust as needed for your upload time
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install huggingface_hub
+
+      - name: Get the commit message
+        id: get-commit-message
+        run: echo "commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
+      - name: Check for changes in the app directory
+        id: check-changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- ./app; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Sync Streamlit app to Hugging Face Space
+        if: steps.check-changes.outputs.changed == 'true'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          COMMIT_MESSAGE: ${{ env.commit_message }}
+          HF_SPACE_ID: ${{ secrets.HF_SPACE_ID }}
+        run: |
+          python - <<EOF
+          from huggingface_hub import HfApi
+          import os
+          import shutil
+
+          api = HfApi(token=os.getenv("HF_TOKEN"))
+
+          # Path to your app folder
+          app_folder = "./app"
+
+          # Check if the app folder exists
+          if not os.path.exists(app_folder):
+              print(f"Error: The folder '{app_folder}' does not exist.")
+              exit(1)
+
+          # Create a temporary directory to upload
+          temp_upload_dir = "/tmp/app_folder"
+          shutil.copytree(app_folder, temp_upload_dir, dirs_exist_ok=True)
+
+          # Upload the app folder to Hugging Face Spaces (root of the repository)
+          api.upload_folder(
+              folder_path=temp_upload_dir,
+              repo_id=os.getenv("HF_SPACE_ID"),
+              repo_type="space",
+              commit_message=os.getenv("COMMIT_MESSAGE")
+          )
+
+          # Clean up temporary folder
+          shutil.rmtree(temp_upload_dir)
+          EOF
